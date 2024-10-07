@@ -21,7 +21,8 @@
 	brave
 	discord
 	firefox-devedition
-	kate
+        kate
+        nerdfonts
 	obs-studio 
 	openocd
 	qemu
@@ -29,10 +30,6 @@
 	tmux
 	wireshark	
 	vlc
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -91,6 +88,30 @@
     enable = true;
     defaultEditor = true;
     viAlias = true;
+
+    extraPackages = [
+      pkgs.rust-analyzer
+      pkgs.shfmt
+    ];
+
+    plugins = with pkgs.vimPlugins; [
+      cmp-buffer
+      cmp-nvim-lsp
+      cmp-path
+      cmp-treesitter
+      nvim-cmp
+      nvim-web-devicons
+      neo-tree-nvim
+      nerdcommenter
+      yankring
+      vim-nix
+      telescope-nvim
+      nightfox-nvim
+      nvim-treesitter.withAllGrammars
+    ];
+    extraConfig = ''
+      colorscheme carbonfox
+    '';
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
