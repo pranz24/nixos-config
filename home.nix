@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pranjalt";
@@ -95,19 +98,6 @@
       enable = true;
       style = "night";
     };
-    treesitter = {
-      enable = true;
-      indent = true;
-      nixvimInjections = true;
-    };
-
-    treesitter-context = {enable = false;};
-
-    treesitter-refactor = {
-      enable = true;
-      highlightDefinitions.enable = true;
-    };
-    plugins.lualine.enable = true;
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
