@@ -9,11 +9,6 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # NixVim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
@@ -36,7 +31,6 @@
       modules = [
         allowUnfree
         ./home.nix
-        inputs.nixvim.homeManagerModules.nixvim
       ];
       extraSpecialArgs = { inherit inputs; };
     };

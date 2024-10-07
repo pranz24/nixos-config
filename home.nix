@@ -1,9 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pranjalt";
@@ -25,7 +22,6 @@
 	discord
 	firefox-devedition
 	kate
-	neovim
 	obs-studio 
 	openocd
 	qemu
@@ -90,14 +86,11 @@
   programs.bash = {
     enable = true;
   };
-  # Setup NixVim
-  programs.nixvim = {
+  # Setup NeoVim
+  programs.neovim = {
     enable = true;
     defaultEditor = true;
-    colorschemes.tokyonight = {
-      enable = true;
-      style = "night";
-    };
+    viAlias = true;
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
