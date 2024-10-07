@@ -83,6 +83,32 @@
     # EDITOR = "emacs";
   };
 
+  # Setup for bash
+  programs.bash = {
+    enable = true;
+  };
+  # Setup NixVim
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+    colorschemes.tokyonight = {
+      enable = true;
+      style = "night";
+    };
+    treesitter = {
+      enable = true;
+      indent = true;
+      nixvimInjections = true;
+    };
+
+    treesitter-context = {enable = false;};
+
+    treesitter-refactor = {
+      enable = true;
+      highlightDefinitions.enable = true;
+    };
+    plugins.lualine.enable = true;
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
