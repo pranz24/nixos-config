@@ -25,9 +25,7 @@
         nerdfonts
 	obs-studio 
 	openocd
-	qemu
 	tailscale
-	tmux
 	wireshark	
 	vlc
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -95,19 +93,20 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      clangd_extensions-nvim
       cmp-buffer
       cmp-nvim-lsp
       cmp-path
       cmp-treesitter
-      nvim-cmp
-      nvim-web-devicons
+      lingua-franca-vim
       neo-tree-nvim
       nerdcommenter
-      yankring
-      vim-nix
-      telescope-nvim
       nightfox-nvim
+      nvim-cmp
+      nvim-web-devicons
       nvim-treesitter.withAllGrammars
+      telescope-nvim
+      vim-nix
     ];
     extraConfig = ''
       colorscheme carbonfox
