@@ -12,6 +12,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -115,18 +118,20 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	cmake 
-	curl 
-	gdb 
-	git 
-	glibc 
-	gnumake 
-	gparted 
-	htop 
-	tcpdump
-	unzip 
-	vim 
-	wget 
+    btop
+    cmake 
+    curl 
+    gdb 
+    git 
+    glibc 
+    gnumake 
+    gparted 
+    btop 
+    tcpdump
+    unzip 
+    vim 
+    wget
+    ffmpeg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

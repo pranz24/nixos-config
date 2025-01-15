@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -18,16 +18,17 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-	brave
-	discord
-	firefox-devedition
-        kate
-        nerdfonts
-	obs-studio 
-	openocd
-	tailscale
-	wireshark	
-	vlc
+    brave
+    discord
+  	firefox-devedition
+    kate
+    nerdfonts
+	  obs-studio 
+	  openocd
+	  tailscale
+	  wireshark	
+    vlc
+    helix
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -77,41 +78,53 @@
     # EDITOR = "emacs";
   };
 
+  # Add Ghostty
+  programs.ghostty = {
+    enable = true;
+    package = unstable.ghostty
+  }
+
   # Setup for bash
   programs.bash = {
     enable = true;
   };
-  # Setup NeoVim
-  programs.neovim = {
+
+  # Setup Git
+  programs.git = {
     enable = true;
-    defaultEditor = true;
-    viAlias = true;
-
-    extraPackages = [
-      pkgs.rust-analyzer
-      pkgs.shfmt
-    ];
-
-    plugins = with pkgs.vimPlugins; [
-      clangd_extensions-nvim
-      cmp-buffer
-      cmp-nvim-lsp
-      cmp-path
-      cmp-treesitter
-      lingua-franca-vim
-      neo-tree-nvim
-      nerdcommenter
-      nightfox-nvim
-      nvim-cmp
-      nvim-web-devicons
-      nvim-treesitter.withAllGrammars
-      telescope-nvim
-      vim-nix
-    ];
-    extraConfig = ''
-      colorscheme carbonfox
-    '';
+    userName = "pranz24";
+    userEmail = "pranjal.tandon@gmail.com";
   };
+
+  # Setup Helix
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "noctis";
+      editor.cursor-shape = {
+        normal = "block";
+        insert = "bar";
+        select = "underline";
+      };
+    };
+    languages.language = [{
+      name = "nix";
+      auto-format = true;
+      }
+      {
+      name = "rust";
+      auto-format = true;
+      indent = { tab-width = 4; unit = "    "; };
+      language-servers = [ "${pkgs.rust-analyzer}" ];
+      }
+      {
+      name = "c";
+      auto-format = true;
+      indent = { tab-width = 2; unit = "  "; };
+      }
+    ];
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
