@@ -39,6 +39,9 @@
 
     # Terminal
     unstable-pkgs.ghostty
+
+    # Fish Shell
+    fish
     
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -91,8 +94,21 @@
 
 
   # Setup for bash
-  programs.bash = {
+  #programs.bash = {
+  #  enable = false;
+  #};
+
+  # Setup for fish
+  programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    plugins = [
+      # Enable a plugin (here grc for colorized command output) from nixpkgs
+      { name = "grc"; src = pkgs.fishPlugins.grc; }
+      { name = "hydro"; src = pkgs.fishPlugins.hydro; }
+    ];
   };
 
   # Setup for Git
