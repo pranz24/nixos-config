@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, unstable-pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -29,6 +29,7 @@
 	  wireshark	
     vlc
     helix
+    unstable-pkgs.ghostty
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -79,10 +80,10 @@
   };
 
   # Add Ghostty
-  programs.ghostty = {
-    enable = true;
-    package = unstable.ghostty
-  }
+  #programs.ghostty = {
+  #  enable = true;
+  #  package = unstable-pkgs.ghostty;
+  #};
 
   # Setup for bash
   programs.bash = {
