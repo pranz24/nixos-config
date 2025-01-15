@@ -18,6 +18,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # Application Software
     brave
     discord
   	firefox-devedition
@@ -26,10 +27,19 @@
 	  obs-studio 
 	  openocd
 	  tailscale
-	  wireshark	
-    vlc
+	  wireshark
     helix
+    vlc
+
+    # Language Servers
+    zls
+    libclang
+    rust-analyzer
+    python312Packages.python-lsp-server
+
+    # Terminal
     unstable-pkgs.ghostty
+    
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -79,25 +89,20 @@
     # EDITOR = "emacs";
   };
 
-  # Add Ghostty
-  #programs.ghostty = {
-  #  enable = true;
-  #  package = unstable-pkgs.ghostty;
-  #};
 
   # Setup for bash
   programs.bash = {
     enable = true;
   };
 
-  # Setup Git
+  # Setup for Git
   programs.git = {
     enable = true;
     userName = "pranz24";
     userEmail = "pranjal.tandon@gmail.com";
   };
 
-  # Setup Helix
+  # Setup for Helix
   programs.helix = {
     enable = true;
     settings = {
@@ -109,19 +114,33 @@
       };
     };
     languages.language = [{
-      name = "nix";
-      auto-format = true;
+        name = "nix";
+        auto-format = true;
+        indent = { tab-width = 2; unit = "  "; };      
       }
       {
-      name = "rust";
-      auto-format = true;
-      indent = { tab-width = 4; unit = "    "; };
-      language-servers = [ "${pkgs.rust-analyzer}" ];
+        name = "rust";
+        auto-format = true;
+        indent = { tab-width = 4; unit = "    "; };
+        language-servers = [ "rust-analyzer" ];
       }
       {
-      name = "c";
-      auto-format = true;
-      indent = { tab-width = 2; unit = "  "; };
+        name = "c";
+        auto-format = true;
+        indent = { tab-width = 2; unit = "    "; };
+        language-servers = [ "clangd" ];
+      }
+      {
+        name = "python";
+        auto-format = true;
+        indent = { tab-width = 4; unit = "   "; };
+        language-servers = [ "pylsp" ];
+      }
+      {
+        name = "zig";
+        auto-format = true;
+        indent = { tab-width = 2; unit = "  "; };
+        language-servers = [ "zls" ];
       }
     ];
   };
