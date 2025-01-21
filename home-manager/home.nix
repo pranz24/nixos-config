@@ -19,42 +19,31 @@
   # environment.
   home.packages = with pkgs; [
     # Application Software
-    brave
-    discord
-  	firefox-devedition
-    kate
-    nerdfonts
-	  obs-studio 
-	  openocd
-	  tailscale
-	  wireshark
-    helix
+    brave 
+    discord 
+    firefox-devedition 
+    kate 
+    obs-studio 
     vlc
-
+	  
+    # Static Analysis, Reverse Engineering, Protocol Anaylzer and Debugger
+    cutter 
+    openocd 
+    valgrind 
+    wireshark
+    
+    # IDE
+    helix
+    
+    # Fonts
+    nerdfonts    
+    
     # Language Servers
-    zls
-    libclang
-    rust-analyzer
-    python312Packages.python-lsp-server
+    zls libclang rust-analyzer python312Packages.python-lsp-server
 
     # Terminal
     unstable-pkgs.ghostty
 
-    # Fish Shell
-    fish
-    
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -92,24 +81,6 @@
     # EDITOR = "emacs";
   };
 
-
-  # Setup for bash
-  #programs.bash = {
-  #  enable = false;
-  #};
-
-  # Setup for fish
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-    '';
-    plugins = [
-      # Enable a plugin (here grc for colorized command output) from nixpkgs
-      { name = "grc"; src = pkgs.fishPlugins.grc; }
-      { name = "hydro"; src = pkgs.fishPlugins.hydro; }
-    ];
-  };
 
   # Setup for Git
   programs.git = {

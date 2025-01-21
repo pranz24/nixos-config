@@ -108,6 +108,7 @@
     isNormalUser = true;
     description = "Pranjal Tandon";
     extraGroups = [ "networkmanager" "wheel" "video" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
     ];
   };
@@ -118,19 +119,29 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    btop
+    # System Apps
+    btop 
     cmake 
     curl 
+    ffmpeg 
     gdb 
     git 
     glibc 
     gnumake 
     gparted 
-    tcpdump
+    tcpdump 
     unzip 
     vim 
     wget
-    ffmpeg
+
+    # Fish Plugins
+    fishPlugins.done
+    fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fzf
+    fishPlugins.grc
+    grc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -141,7 +152,9 @@
      enableSSHSupport = true;
   };
 
-  # List services that you want to enable:
+  # Make Fish the default shell
+ programs.fish.enable = true;
+
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
