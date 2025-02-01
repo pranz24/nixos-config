@@ -19,18 +19,11 @@
   # environment.
   home.packages = with pkgs; [
     # Application Software
-    brave 
-    discord 
-    firefox-devedition 
-    kate 
-    obs-studio 
-    vlc
+    brave discord firefox-devedition 
+    kate obs-studio vlc
 	  
     # Static Analysis, Reverse Engineering, Protocol Anaylzer and Debugger
-    cutter 
-    openocd 
-    valgrind 
-    wireshark
+    cutter openocd valgrind wireshark
     
     # IDE
     helix
