@@ -129,7 +129,8 @@
     glibc 
     gnumake 
     gparted 
-    tcpdump 
+    tcpdump
+    tmux 
     unzip 
     vim 
     wget
