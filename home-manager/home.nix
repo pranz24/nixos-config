@@ -24,12 +24,15 @@
 	  
     # Static Analysis, Reverse Engineering, Protocol Anaylzer and Debugger
     cutter openocd valgrind wireshark
+
+    # EDA tool
+    kicad
     
     # IDE
     helix
     
     # Fonts
-    nerdfonts    
+    nerdfonts
     
     # Language Servers
     zls libclang rust-analyzer python312Packages.python-lsp-server
