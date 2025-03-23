@@ -130,7 +130,7 @@
     gnumake 
     gparted 
     tcpdump
-    tmux 
+    kitty
     unzip 
     vim 
     wget
