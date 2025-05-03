@@ -31,8 +31,8 @@
     # IDE
     helix
     
-    # Fonts
-    nerdfonts
+    # Fonts and themes
+    nerdfonts epapirus-icon-theme
     
     # Language Servers
     zls libclang rust-analyzer python312Packages.python-lsp-server
