@@ -23,7 +23,7 @@
     kate obs-studio vlc
 	  
     # Static Analysis, Reverse Engineering, Protocol Anaylzer and Debugger
-    cutter openocd valgrind wireshark
+    cutter openocd valgrind wireshark picocom
 
     # EDA tool
     kicad

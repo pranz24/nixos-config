@@ -129,7 +129,6 @@
     gnumake 
     gparted 
     tcpdump
-    kitty
     unzip 
     vim 
     wget
