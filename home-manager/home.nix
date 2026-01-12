@@ -1,6 +1,24 @@
 { config, pkgs, unstable-pkgs, ... }:
 
 {
+  imports = [
+    # Programs
+    ./modules/programs/git.nix
+    ./modules/programs/fish.nix
+    ./modules/programs/text-editor.nix
+
+    # Applications
+    ./modules/applications/browsers.nix
+    ./modules/applications/communication-channels.nix
+    ./modules/applications/media.nix
+    ./modules/applications/dev-tools.nix
+
+    # Themes
+    ./modules/themes/fonts.nix
+    ./modules/themes/icons.nix
+    ./modules/themes/wallpaper.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pranjalt";
@@ -14,50 +32,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    # Application Software
-    brave discord firefox-devedition 
-    kdePackages.kate obs-studio vlc
-	  
-    # Static Analysis, Reverse Engineering, Protocol Anaylzer and Debugger
-    cutter openocd valgrind wireshark picocom
-
-    # EDA tool
-    kicad
-    
-    # IDE
-    helix
-    
-    # Fonts and themes
-    nerd-fonts.daddy-time-mono colloid-icon-theme
-    
-    # Language Servers
-    zls libclang rust-analyzer python312Packages.python-lsp-server
-
-    # Terminal
-    unstable-pkgs.ghostty
-
-    # LLM
-    claude-code
-  ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -77,58 +51,6 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-  };
-
-
-  # Setup for Git
-  # programs.git.settings.user.email
-  programs.git.settings = {
-    enable = true;
-    user.name = "pranz24";
-    user.email = "pranjal.tandon@gmail.com";
-  };
-
-  # Setup for Helix
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "noctis";
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
-      };
-    };
-    languages.language = [{
-        name = "nix";
-        auto-format = true;
-        indent = { tab-width = 2; unit = "  "; };      
-      }
-      {
-        name = "rust";
-        auto-format = true;
-        indent = { tab-width = 4; unit = "    "; };
-        language-servers = [ "rust-analyzer" ];
-      }
-      {
-        name = "c";
-        auto-format = true;
-        indent = { tab-width = 2; unit = "    "; };
-        language-servers = [ "clangd" ];
-      }
-      {
-        name = "python";
-        auto-format = true;
-        indent = { tab-width = 4; unit = "   "; };
-        language-servers = [ "pylsp" ];
-      }
-      {
-        name = "zig";
-        auto-format = true;
-        indent = { tab-width = 2; unit = "  "; };
-        language-servers = [ "zls" ];
-      }
-    ];
   };
 
   # Let Home Manager install and manage itself.
