@@ -20,7 +20,7 @@
   home.packages = with pkgs; [
     # Application Software
     brave discord firefox-devedition 
-    kate obs-studio vlc
+    kdePackages.kate obs-studio vlc
 	  
     # Static Analysis, Reverse Engineering, Protocol Anaylzer and Debugger
     cutter openocd valgrind wireshark picocom
@@ -32,7 +32,7 @@
     helix
     
     # Fonts and themes
-    nerdfonts epapirus-icon-theme
+    nerd-fonts.daddy-time-mono colloid-icon-theme
     
     # Language Servers
     zls libclang rust-analyzer python312Packages.python-lsp-server
@@ -40,6 +40,8 @@
     # Terminal
     unstable-pkgs.ghostty
 
+    # LLM
+    claude-code
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -79,10 +81,11 @@
 
 
   # Setup for Git
-  programs.git = {
+  # programs.git.settings.user.email
+  programs.git.settings = {
     enable = true;
-    userName = "pranz24";
-    userEmail = "pranjal.tandon@gmail.com";
+    user.name = "pranz24";
+    user.email = "pranjal.tandon@gmail.com";
   };
 
   # Setup for Helix
