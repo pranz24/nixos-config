@@ -21,6 +21,16 @@
 
     # Media tools
     ffmpeg
+
+    # Fish Plugins
+    # Fish Plugins
+    fishPlugins.done
+    fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fzf
+    fishPlugins.grc
+    grc
   ];
 
   # Enable Fish as the default shell

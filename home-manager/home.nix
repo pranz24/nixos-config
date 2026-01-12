@@ -4,7 +4,6 @@
   imports = [
     # Programs
     ./modules/programs/git.nix
-    ./modules/programs/fish.nix
     ./modules/programs/text-editor.nix
 
     # Applications
