@@ -6,6 +6,7 @@
 
   # Enable NetworkManager for network management
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
 
   # Firewall configuration (currently disabled, uncomment to configure)
   # networking.firewall.allowedTCPPorts = [ ... ];
