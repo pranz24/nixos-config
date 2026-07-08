@@ -24,5 +24,6 @@
 
     # LLM
     claude-code
+    unstable-pkgs.herdr
   ];
 }
